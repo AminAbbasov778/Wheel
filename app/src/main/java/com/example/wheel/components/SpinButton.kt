@@ -70,12 +70,12 @@ fun SpinButton(
         var fontSize by remember { mutableStateOf(10.sp) }
 
         Canvas(modifier = Modifier.fillMaxSize()) {
-          fontSize = with(density) { (size.minDimension * 0.06f).toSp() }
+          fontSize = with(density) { (size.minDimension * 0.08f).toSp() }
 
             val baseColor = Color(0xFF6EE7FF)
             val opacities = listOf(
-                 0.6f, 0.6f, 0.5f,
-                0.5f, 0.5f, 0.4f, 0.3f, 0.2f, 0.1f, 0.09f, 0.08f,
+                 0.6f, 0.6f, 0.6f, 0.6f, 0.6f, 0.6f, 0.6f, 0.6f, 0.6f, 0.5f,
+                0.5f,0.5f,0.5f, 0.5f, 0.4f, 0.3f, 0.2f, 0.1f, 0.09f, 0.08f,
                 0.07f, 0.06f, 0.05f, 0.04f, 0.038f, 0.035f, 0.035f, 0.035f, 0.049f, 0.0495f,
                 0.006f, 0.003f
             )
@@ -85,10 +85,10 @@ fun SpinButton(
                 brush = Brush.radialGradient(
                     colors = gradientColors
                 ),
-                radius = size.minDimension * 0.2f
+                radius = size.minDimension * 0.3f
             )
 
-            drawCircle(Color(0xFF0F1220), radius = size.minDimension * 0.1f)
+            drawCircle(Color(0xFF0F1220), radius = size.minDimension * 0.2f)
 
 
 
@@ -96,7 +96,7 @@ fun SpinButton(
 
                 Brush.linearGradient(listOf(Color(0xFF6EE7FF), Color(0xFF4D7CFF))),
 
-                radius = size.minDimension * 0.2f,
+                radius = size.minDimension * 0.3f,
 
                 style = Stroke(8f)
 
