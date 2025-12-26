@@ -90,7 +90,7 @@ fun WheelScreen() {
         animationSpec = if (skipNextAnimation) {
             snap()
         } else {
-            tween(durationMillis = 10000, easing = FastOutSlowInEasing)
+            tween(durationMillis = 20000, easing = FastOutSlowInEasing)
         },
         label = "WheelRotation",
         finishedListener = {
@@ -224,13 +224,12 @@ fun WheelScreen() {
 
                             Log.d("rotation_before", rotation.toString())
 
-                            rotation += (angularDistance + (360f * 5))
+                            rotation += (angularDistance + (360f * 8))
 
                             Log.d("rotation_after", rotation.toString())
                         }
                     },
                     density = LocalDensity.current,
-                    outerRadius = outerRadius
 
                 )
             }

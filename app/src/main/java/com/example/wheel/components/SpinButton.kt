@@ -29,9 +29,7 @@ fun SpinButton(
     modifier: Modifier,
     onClick: () -> Unit,
     density: Density,
-    outerRadius: Float,
 ) {
-    val fontSize = with(density) { (outerRadius * 0.35f).toSp() }
 
 
     var pressed by remember { mutableStateOf(false) }
@@ -69,54 +67,45 @@ fun SpinButton(
             }, contentAlignment = Alignment.Center
 
     ) {
+        var fontSize by remember { mutableStateOf(10.sp) }
 
         Canvas(modifier = Modifier.fillMaxSize()) {
-            drawCircle(
+          fontSize = with(density) { (size.minDimension * 0.06f).toSp() }
 
-                Brush.radialGradient(
-
-                    listOf(
-
-                        Color(0xFF6EE7FF).copy(0.6f),
-                        Color(0xFF6EE7FF).copy(0.5f),
-                        Color(0xFF6EE7FF).copy(0.5f),
-                        Color(0xFF6EE7FF).copy(0.4f),
-                        Color(0xFF6EE7FF).copy(0.3f),
-                        Color(0xFF6EE7FF).copy(0.2f),
-                        Color(0xFF6EE7FF).copy(0.1f),
-                        Color(0xFF6EE7FF).copy(0.06f),
-                        Color(0xFF6EE7FF).copy(0.05f),
-                        Color(0xFF6EE7FF).copy(0.04f),
-                        Color(0xFF6EE7FF).copy(0.03f),
-                        Color(0xFF6EE7FF).copy(0.02f),
-                        Color(0xFF6EE7FF).copy(0.01f),
-                        Color(0xFF6EE7FF).copy(0.009f),
-                        Color(0xFF6EE7FF).copy(0.005f),
-                        Color(0xFF6EE7FF).copy(0.003f),
-                        Color(0xFF6EE7FF).copy(0.001f),
-
-                        )
-
-                ),
-                radius = size.minDimension * 0.24f
-
+            val baseColor = Color(0xFF6EE7FF)
+            val opacities = listOf(
+                 0.6f, 0.6f, 0.5f,
+                0.5f, 0.5f, 0.4f, 0.3f, 0.2f, 0.1f, 0.09f, 0.08f,
+                0.07f, 0.06f, 0.05f, 0.04f, 0.038f, 0.035f, 0.035f, 0.035f, 0.049f, 0.0495f,
+                0.006f, 0.003f
             )
+            val gradientColors = opacities.map { baseColor.copy(it) }
+
+            drawCircle(
+                brush = Brush.radialGradient(
+                    colors = gradientColors
+                ),
+                radius = size.minDimension * 0.2f
+            )
+
+            drawCircle(Color(0xFF0F1220), radius = size.minDimension * 0.1f)
+
+
 
             drawCircle(
 
                 Brush.linearGradient(listOf(Color(0xFF6EE7FF), Color(0xFF4D7CFF))),
 
-                radius = size.minDimension * 0.24f,
+                radius = size.minDimension * 0.2f,
 
-                style = Stroke(12f)
+                style = Stroke(8f)
 
             )
 
-            drawCircle(Color(0xFF0F1220), radius = size.minDimension * 0.16f)
 
         }
 
-        Text("SPIN", fontSize = 22.sp, color = Color.White, fontFamily = FontFamily.Serif)
+        Text("SPIN", fontSize = fontSize, color = Color.White, fontFamily = FontFamily.Serif)
 
     }
 
